@@ -1,26 +1,6 @@
-﻿<#
-.SYNOPSIS
-Starts a new EC2 instance
-
-.PARAMETER imageId
-ImageId to create the instance with
-
-.PARAMETER instanceType
-Type of instance to create (micro, small, medium, etc)
-
-.PARAMETER securityGroup
-Security Group  to use for the instance
-
-.PARAMETER awsAccessKey
-Access key for AWS
-
-.PARAMETER awsSecretkey
-Secret Key for AWS
-
-#>
-function Start-EC2Instance([string] $imageId,
-                        [string] $instanceType,
-                        [string[]] $securityGroup,
+﻿function Start-EC2Instance([string] $imageId,
+                        [string] $instanceType = $PoshAws.Preferences.DefaultEC2InstanceType,
+                        [string[]] $securityGroup = $PoshAws.Preferences.DefaultEC2SecurityGroup,
                         [string] $awsAccessKey = $PoshAws.Preferences.AwsAccessKey,
                         [string] $awsSecretKey = $PoshAWS.Preferences.AwsSecretKey
                             )
