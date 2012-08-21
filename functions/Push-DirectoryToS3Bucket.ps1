@@ -11,6 +11,9 @@ Name of the bucket to push to
 .PARAMETER excludeFilter
 Items that should be excluded
 
+.PARAMETER $recurse
+If all the items should be loaded recursively
+
 .PARAMETER awsAccessKey
 Access key for AWS
 
@@ -20,16 +23,17 @@ Secret Key for AWS
 #>
 function Push-DirectoryToS3Bucket([string] $directory,
                                 [string] $bucketName,
-                                [string] $excludeFilter,
+                                [string[]] $excludeFilter = $null,
                                 [string] $awsAccessKey = $PoshAws.Preferences.AwsAccessKey,
-                                [string] $awsSecretKey = $PoshAWS.Preferences.AwsSecretKey
+                                [string] $awsSecretKey = $PoshAWS.Preferences.AwsSecretKey,
+                                [switch] $recurse
                                 )
 {
     $directoryPath = Resolve-Path $directory
 
     $filePaths = @{}
 
-    gci $directoryPath -recurse | Where-Object {
+    gci $directoryPath -recurse:$recurse -Exclude $excludeFilter | Where-Object {
             (Test-Path $_.FullName -PathType Leaf) -eq $true
         } | ForEach-Object {
                 $fullPath = $_.FullName
