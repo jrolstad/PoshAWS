@@ -1,0 +1,35 @@
+TOPIC
+    Amazon Web Services Powershell Wrapper
+
+SHORT DESCRIPTION
+    Thin wrapper around the AWS functions to be easily used in Powershell
+
+LONG DESCRIPTION
+    Thin wrapper around the AWS functions to be easily used in Powershell
+        
+POWERSHELL COMPATIBILITY
+    Since PPA 2.0 is module based, it only works on Windows PowerShell 2.0
+    
+PREFERENCE VARIABLES
+    The PoshAws module has two variables that it exports
+    $PoshAws
+    $PoshAws.Preferences
+    
+    Both are hash tables that freely store application state and preferences
+
+CMDLETS
+        
+FUNCTIONS
+    
+    All functions have help, for additional information {function} -?
+    
+	For a listing of functions, run the command:
+	(Get-Module PoshAWS).ExportedCommands
+        
+PSCX ALIASES
+    To see what aliases get created by PoshAws execute "Get-Command -type Alias -module Ppa*" at
+    the PowerShell prompt.  The current PoshAws  defined aliases are listed below:
+
+UTILITY APPLICATIONS
+
+
